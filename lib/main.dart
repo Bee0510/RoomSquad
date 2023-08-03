@@ -5,6 +5,7 @@ import 'package:roomsquad/Authentication/Auth_Screens/LoginScreen.dart';
 import 'package:roomsquad/Authentication/Auth_Screens/RegisterScreen.dart';
 import 'package:roomsquad/Screens/BottomNavigator.dart';
 import 'package:roomsquad/Screens/SplashScreen.dart';
+import 'package:roomsquad/Screens/chatRoomScreen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Colors.white,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         'registerScreen': (context) => registerScreen(),
         'loginScreen': (context) => loginScreen(),
         'chatScreen': (context) => chatScreen(),
+        'chatRoomScreen': (context) => chatRoomScreen(),
       },
       home: const splashScreen(),
     );

@@ -11,13 +11,14 @@ class Message {
   final String id;
   final String profileId;
   final String content;
+
   final DateTime createdAt;
   final bool isMine;
 
   Message.fromMap({
     required Map<String, dynamic> map,
     required String myUserId,
-  })  : id = map['id'],
+  })  : id = map['id'].toString(),
         profileId = map['profile_id'],
         content = map['content'],
         createdAt = DateTime.parse(map['created_at']),

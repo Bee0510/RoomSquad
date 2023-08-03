@@ -9,7 +9,7 @@ class Profiles {
   final DateTime createdAt;
 
   Profiles.fromMap(Map<String, dynamic> map)
-      : id = map['id'],
+      : id = map['id'].toString(),
         username = map['username'],
         createdAt = DateTime.parse(map['created_at']);
 }
