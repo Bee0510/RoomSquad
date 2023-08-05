@@ -1,17 +1,18 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:roomsquad/Constant/constant.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class messadeBar extends StatefulWidget {
-  const messadeBar({super.key});
+class messageBar extends StatefulWidget {
+  const messageBar({required this.roomId});
+  final String roomId;
 
   @override
-  State<messadeBar> createState() => _messadeBarState();
+  State<messageBar> createState() => _messageBarState();
 }
 
-class _messadeBarState extends State<messadeBar> {
+class _messageBarState extends State<messageBar> {
   late final TextEditingController messageEditingController;
   void submitMessgage() async {
     final text = messageEditingController.text;
@@ -22,9 +23,10 @@ class _messadeBarState extends State<messadeBar> {
     messageEditingController.clear();
     try {
       await supabase.from('messages').insert({
+        'room_id': widget.roomId,
         'profile_id': myUserId,
         'content': text,
-      }).select();
+      }).execute();
     } catch (e) {
       print(e.toString() + 'fhwbh');
     }

@@ -26,6 +26,7 @@ class groupScreen extends StatelessWidget {
               ElevatedButton(
                   onPressed: () async {
                     await supabase.auth.signOut();
+                    Navigator.of(context).pushReplacementNamed('loginScreen');
                   },
                   child: Text('Sign Out'))
             ],

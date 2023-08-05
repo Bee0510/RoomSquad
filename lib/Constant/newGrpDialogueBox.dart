@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_declarations, no_leading_underscores_for_local_identifiers, sized_box_for_whitespace, unused_local_variable
+// ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_declarations, no_leading_underscores_for_local_identifiers, sized_box_for_whitespace, unused_local_variable, deprecated_member_use, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:roomsquad/Constant/constant.dart';
@@ -55,12 +55,20 @@ class _newGrpDiaBoxState extends State<newGrpDiaBox> {
                       children: <Widget>[
                         ElevatedButton(
                             onPressed: () async {
-                              final data = await supabase
-                                  .from('chat_rooms')
-                                  .insert({
-                                'name': groupName.text,
-                                'room_code': roomCode.text
-                              });
+                              // final data = await supabase
+                              //     .from('chat_rooms')
+                              //     .insert({
+                              //   'name': groupName.text,
+                              //   'room_code': roomCode.text
+                              // });
+                              final res =
+                                  await supabase.rpc('create_room').execute();
+                              final data = res.data;
+                              if (data == null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('error')));
+                                return;
+                              }
                             },
                             child: Text(
                               'Create',

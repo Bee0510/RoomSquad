@@ -2,13 +2,14 @@ class chatRooms {
   chatRooms({
     required this.id,
     required this.groupName,
-    required this.roomCode,
+    required this.createdAt,
   });
-  final int id;
+  final String id;
+
   final String groupName;
-  final String roomCode;
+  final DateTime createdAt;
   chatRooms.fromMap(Map<String, dynamic> map)
       : id = map['id'],
         groupName = map['name'] ?? 'Untitled',
-        roomCode = map['room_code'];
+        createdAt = DateTime.parse(map['created_at']);
 }

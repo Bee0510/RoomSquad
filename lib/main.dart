@@ -8,12 +8,14 @@ import 'package:roomsquad/Screens/SplashScreen.dart';
 import 'package:roomsquad/Screens/chatRoomScreen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'Constant/constant.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://yziuumoenranivjqogph.supabase.co',
+    url: 'https://aidmawbyfgmvdmnmvjuv.supabase.co',
     anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6aXV1bW9lbnJhbml2anFvZ3BoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTA3NDQ5NzksImV4cCI6MjAwNjMyMDk3OX0.0ZoxZGmWz-Q_r8Eqwhd4RIoRbw0Rd-5Wq0KfFVTRADo',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpZG1hd2J5ZmdtdmRtbm12anV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTEwOTM3ODksImV4cCI6MjAwNjY2OTc4OX0.K91KyYkDNOgpNPsNUKY5XzWOMKb999DyS7gGIfZiEbU',
   );
   runApp(const MyApp());
 }
@@ -34,7 +36,6 @@ class MyApp extends StatelessWidget {
         'registerScreen': (context) => registerScreen(),
         'loginScreen': (context) => loginScreen(),
         'chatScreen': (context) => chatScreen(),
-        'chatRoomScreen': (context) => chatRoomScreen(),
       },
       home: const splashScreen(),
     );
