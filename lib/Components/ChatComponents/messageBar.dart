@@ -1,6 +1,7 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors, deprecated_member_use
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, deprecated_member_use, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:roomsquad/Constant/constant.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -14,6 +15,7 @@ class messageBar extends StatefulWidget {
 
 class _messageBarState extends State<messageBar> {
   late final TextEditingController messageEditingController;
+  bool isTyped = true;
   void submitMessgage() async {
     final text = messageEditingController.text;
     final myUserId = supabase.auth.currentUser!.id;
@@ -46,30 +48,42 @@ class _messageBarState extends State<messageBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.grey[200],
+    return Container(
+      color: Colors.transparent,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(left: 8, bottom: 4),
           child: Row(
             children: [
               Expanded(
                 child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  maxLines: null,
-                  autofocus: true,
-                  controller: messageEditingController,
-                  decoration: const InputDecoration(
-                    hintText: 'Type a message',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.all(8),
-                  ),
-                ),
+                    keyboardType: TextInputType.text,
+                    maxLines: null,
+                    controller: messageEditingController,
+                    style:
+                        GoogleFonts.roboto(fontSize: 18, color: Colors.white),
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color.fromRGBO(20, 30, 41, 1),
+                        hintText: "Message",
+                        hintStyle: GoogleFonts.roboto(
+                            fontSize: 18, color: Colors.grey[700]),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25)))),
               ),
               TextButton(
-                onPressed: () => submitMessgage(),
-                child: const Text('Send'),
+                onPressed: () {
+                  submitMessgage();
+                },
+                child: CircleAvatar(
+                  backgroundColor: Colors.green,
+                  child: Center(
+                    child: Icon(
+                      Icons.send,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

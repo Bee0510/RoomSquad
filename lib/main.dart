@@ -3,12 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:roomsquad/Authentication/Auth_Screens/LoginScreen.dart';
 import 'package:roomsquad/Authentication/Auth_Screens/RegisterScreen.dart';
-import 'package:roomsquad/Screens/BottomNavigator.dart';
+import 'package:roomsquad/Screens/HomeScreen/HomeScreen.dart';
 import 'package:roomsquad/Screens/SplashScreen.dart';
-import 'package:roomsquad/Screens/chatRoomScreen.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'Constant/constant.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +15,7 @@ Future<void> main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpZG1hd2J5ZmdtdmRtbm12anV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTEwOTM3ODksImV4cCI6MjAwNjY2OTc4OX0.K91KyYkDNOgpNPsNUKY5XzWOMKb999DyS7gGIfZiEbU',
   );
+
   runApp(const MyApp());
 }
 
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'registerScreen': (context) => registerScreen(),
         'loginScreen': (context) => loginScreen(),
-        'chatScreen': (context) => chatScreen(),
+        'homeScreen': (context) => homeScreen(),
       },
       home: const splashScreen(),
     );

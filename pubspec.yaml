@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   supabase_flutter: ^1.10.10
   fancy_bottom_navigation: ^0.3.3
+  google_fonts: ^4.0.4
+  provider: ^6.0.5
+  flutter_chat_bubble: ^2.0.2
 
 dev_dependencies:
   flutter_test:

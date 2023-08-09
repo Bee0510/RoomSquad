@@ -26,7 +26,7 @@ class _loginScreenState extends State<loginScreen> {
     try {
       await supabase.auth.signInWithPassword(password: password, email: Email);
       Navigator.of(context)
-          .pushNamedAndRemoveUntil('chatScreen', (route) => false);
+          .pushNamedAndRemoveUntil('homeScreen', (route) => false);
     } catch (e) {
       print(e.toString());
     }

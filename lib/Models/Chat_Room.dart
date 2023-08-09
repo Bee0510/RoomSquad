@@ -10,6 +10,6 @@ class chatRooms {
   final DateTime createdAt;
   chatRooms.fromMap(Map<String, dynamic> map)
       : id = map['id'],
-        groupName = map['name'] ?? 'Untitled',
+        groupName = map['name'] ?? 'Room Name',
         createdAt = DateTime.parse(map['created_at']);
 }

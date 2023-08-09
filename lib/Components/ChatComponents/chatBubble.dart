@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:roomsquad/Constant/constant.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:roomsquad/Models/Message_Model.dart';
 import 'package:roomsquad/Models/Profile_Model.dart';
 
@@ -18,7 +18,7 @@ class chatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 4,
-      borderRadius: BorderRadius.circular(4),
+      borderRadius: BorderRadius.circular(10),
       color: userId == message.id ? Colors.grey[300] : Colors.blue[200],
       child: Padding(
         padding: EdgeInsets.all(8),
@@ -34,10 +34,8 @@ class chatBubble extends StatelessWidget {
             ),
             Text(
               message.content,
-              style: const TextStyle(
-                color: Colors.black,
-              ),
-            )
+              style: GoogleFonts.roboto(fontSize: 16, color: Colors.black),
+            ),
           ],
         ),
       ),

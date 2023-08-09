@@ -21,7 +21,7 @@ class _splashScreenState extends State<splashScreen> {
           .pushNamedAndRemoveUntil('registerScreen', (route) => false);
     } else {
       Navigator.of(context)
-          .pushNamedAndRemoveUntil('chatScreen', (route) => false);
+          .pushNamedAndRemoveUntil('homeScreen', (route) => false);
     }
   }
 

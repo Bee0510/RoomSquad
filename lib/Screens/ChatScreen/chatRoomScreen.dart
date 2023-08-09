@@ -9,6 +9,7 @@ import 'package:roomsquad/Constant/constant.dart';
 import 'package:roomsquad/Models/Chat_Room.dart';
 import 'package:roomsquad/Models/Message_Model.dart';
 import 'package:roomsquad/Models/Profile_Model.dart';
+import 'package:roomsquad/Screens/ChatScreen/Chat_Models.dart';
 
 class chatRoomScreen extends StatefulWidget {
   const chatRoomScreen({
@@ -21,6 +22,8 @@ class chatRoomScreen extends StatefulWidget {
 
 class _chatScreenState extends State<chatRoomScreen> {
   List<Message>? _messages;
+  String img =
+      'https://universosamsung.com/wp-content/uploads/2020/12/Whatsapp-Wallpaper-112-768x1365-1.jpg';
 
   final Map<String, Profiles> profileCache = {};
 
@@ -28,7 +31,12 @@ class _chatScreenState extends State<chatRoomScreen> {
 
   @override
   void initState() {
-    messagesRiver = supabase
+    message_stream();
+    super.initState();
+  }
+
+  StreamSubscription<List<Message>> message_stream() {
+    return messagesRiver = supabase
         .from('messages')
         .stream(primaryKey: ['id'])
         .eq('room_id', widget.room.id)
@@ -43,7 +51,6 @@ class _chatScreenState extends State<chatRoomScreen> {
             loadProfileCache(message.profileId);
           }
         });
-    super.initState();
   }
 
   Future<void> loadProfileCache(String profileId) async {
@@ -63,6 +70,64 @@ class _chatScreenState extends State<chatRoomScreen> {
         profileCache[profileId] = Profiles.fromMap(data);
       });
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        primary: true,
+        backgroundColor: Color.fromRGBO(20, 30, 41, 1),
+        title: TextButton(
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return dialogueBox(roomId: widget.room.id);
+                });
+          },
+          child: Text(
+            widget.room.groupName,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.video_call)),
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return inviteBox(
+                        roomId: widget.room.id,
+                      );
+                    });
+              },
+              icon: Icon(Icons.add)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.view_column)),
+        ],
+      ),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: NetworkImage(img), fit: BoxFit.fill)),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: messageList(),
+              ),
+              messageBar(
+                roomId: widget.room.id,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget messageList() {
@@ -95,30 +160,5 @@ class _chatScreenState extends State<chatRoomScreen> {
                     userId: userId)),
           );
         });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        widget.room.groupName,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      )),
-      body: SafeArea(
-          child: Column(
-        children: <Widget>[
-          Expanded(
-            child: messageList(),
-          ),
-          messageBar(
-            roomId: widget.room.id,
-          ),
-        ],
-      )),
-    );
   }
 }
