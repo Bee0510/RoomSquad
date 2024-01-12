@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, deprecated_member_use, unnecessary_cast, unused_field, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, deprecated_member_use, unnecessary_cast, unused_field, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'dart:async';
 
@@ -107,7 +107,11 @@ class _chatScreenState extends State<chatRoomScreen> {
                     });
               },
               icon: Icon(Icons.add)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.view_column)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('chatRoomDetails');
+              },
+              icon: Icon(Icons.view_column)),
         ],
       ),
       body: SafeArea(

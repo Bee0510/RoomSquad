@@ -13,7 +13,6 @@ const loader = Center(
 );
 
 extension ShowSnackBar on BuildContext {
-  /// Displays a basic snackbar
   void showSnackBar({
     required String message,
     Color backgroundColor = Colors.white,

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomsquad/Authentication/Auth_Screens/LoginScreen.dart';
 import 'package:roomsquad/Authentication/Auth_Screens/RegisterScreen.dart';
+import 'package:roomsquad/Screens/ChatroomDetails/chatRoomDetails.dart';
 import 'package:roomsquad/Screens/HomeScreen/HomeScreen.dart';
 import 'package:roomsquad/Screens/SplashScreen.dart';
 
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         'registerScreen': (context) => registerScreen(),
         'loginScreen': (context) => loginScreen(),
         'homeScreen': (context) => homeScreen(),
+        'chatRoomDetails': (context) => chatRoomDetails(),
       },
       home: const splashScreen(),
     );

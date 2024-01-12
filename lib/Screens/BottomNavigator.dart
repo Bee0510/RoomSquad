@@ -2,7 +2,6 @@
 
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:roomsquad/Screens/GroupScreen.dart';
 import 'package:roomsquad/Screens/HomeScreen/HomeScreen.dart';
 // import 'package:roomsquad/Screens/ProfileScreen.dart';
 
@@ -19,7 +18,6 @@ class _chatScreenState extends State<chatScreen> {
   void initState() {
     _tabList = [
       {'Page': homeScreen(), 'Title': "Home"},
-      {'Page': groupScreen(), 'Title': "Squad"},
       // {'Page': profileScreen(), 'Title': "Me"},
 
       // {'Page': About_Page(), 'Title': "About"}

@@ -56,14 +56,6 @@ class _homeScreenState extends State<homeScreen> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-                // gradient: LinearGradient(
-                //   colors: [
-                //     Color(0xFF00E5FF), // Bright Teal
-                //     Color(0xFF8000FF), // Vibrant Purple
-                //   ],
-                //   begin: Alignment.topCenter,
-                //   end: Alignment.bottomCenter,
-                // ),
                 color: Color.fromRGBO(39, 52, 67, 100),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
